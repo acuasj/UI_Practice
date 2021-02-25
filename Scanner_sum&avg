@@ -6,42 +6,41 @@ public class PutInSumAvg {
 	
 	public static void main(String[] args) {
 		
-		PutInSumAvg A = new PutInSumAvg();
+	PutInSumAvg A = new PutInSumAvg();
 		
-		double result1 = A.sum();
+	double result1 = A.sum();
 		 
-		System.out.println("합계 : " + result1);
+	System.out.println("합계 : " + result1);
 		 
-		Scanner S = new Scanner(System.in);
+	Scanner S = new Scanner(System.in);
 		 
-		System.out.println("마지막 번호를 입력해주세요");
-		System.out.print(">>");
-		int num = S.nextInt();		 
-		System.out.println("평균 :" + result1/num);
+	System.out.println("마지막 번호를 입력해주세요");
+	System.out.print(">>");
+	int num = S.nextInt();		 
+	System.out.println("평균 :" + result1/num);
 		
-		S.close();
+	S.close();
 	}
+
 
 	public int sum() {
  
-		int sum = 0;
+	int sum = 0;
 		 
-		Scanner SC = new Scanner(System.in);
+	Scanner SC = new Scanner(System.in);
 		  
-		System.out.println("점수를 입력할 전체 학생수를 넣으세요");
-		System.out.print(">>");
+	System.out.println("점수를 입력할 전체 학생수를 넣으세요");
+	System.out.print(">>");
 		 
-		int num = SC.nextInt();     //int num을 넣어서 객체 생성해줌
+	int num = SC.nextInt();     //int num을 넣어서 객체 생성해줌
           
-		int[] score = new int[num];      // 사용자로부터 학생수를 입력받아, 그 싸이즈의 배열 만들기
+	int[] score = new int[num];      // 사용자로부터 학생수를 입력받아, 그 싸이즈의 배열 만들기
 		 
-		 	for(int i =0; i<=score.length-1; i++) {   //학생수 배열에 맞춰 점수 입력받기 // i는 0부터 시작하고, length-1하니 오류 해결됨
+		for(int i =0; i<=score.length-1; i++) {   //학생수 배열에 맞춰 점수 입력받기 // i는 0부터 시작하고, length-1하니 오류 해결됨
 			 
-				System.out.print(i+1 + "번 점수. :");
-				score[i] = SC.nextInt();
-				sum += score[i];	
-			 } return sum; 	
-		 
+		System.out.print(i+1 + "번 점수. :");
+		score[i] = SC.nextInt();
+		sum += score[i];	
+		} return sum; 	
 	}
-	
 }
