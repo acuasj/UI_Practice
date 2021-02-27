@@ -1,6 +1,8 @@
 package Test02;
 
 class Test10_02{
+
+//static의 유무에 따라 & 같은클래스 안인지 밖인지에 따라, 필드와 메소드를 불러와 이용하는 방법의 차이에 대해 알아보자!! 
 	
 	int a = 10; 
 	static int b = 20;
