@@ -1,0 +1,112 @@
+package Test00;
+
+// 고용형태별 급여 계산하기
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class Switch_income {
+	
+	static Scanner sc = new Scanner(System.in);
+	static Scanner scStr = new Scanner(System.in);
+	static double pay  = 0.0;
+	static double bonus = 0.0;
+	
+	public static double getPay(int i) {
+		
+		switch(i) {
+		case 1:     //Full-Time : annual salary / 12
+			System.out.print("Enter Salary: ");
+			double salary  = sc.nextInt();
+			pay = salary/12;       
+			break;     
+	
+		case 2:    //Part-Time : hours worked * rate of pay
+			System.out.print("Enter hours worked: ");
+			double hours  = sc.nextDouble();
+			System.out.print("Enter hourly rate: ");
+			double rate  = sc.nextDouble();
+			pay = hours * rate;                    
+			break;        
+		
+		case 3:      //Piecework : 0.25 per unit made
+			System.out.print("Enter number of units completed: ");
+			double unit  = sc.nextInt();
+			pay = unit*0.25;      
+			break;
+			
+		} return pay;
+	}
+	
+	public static double getBonus() {	
+		
+		System.out.print("Bonus? (Y/N) ");
+		
+		String yN = scStr.nextLine();  
+		
+			if (yN.equals("Y") || yN.equals("y")) {
+				System.out.print("Enter bonus amount: ");
+				double B = sc.nextDouble();
+				bonus = B;
+			} else if (yN.equals("N")||yN.equals("n")) {
+				bonus = 0.00;
+			} else {
+				System.out.println("잘못 입력하였습니다.");
+			}
+			
+			return bonus;	
+	} 
+	
+	public static void printOut() {
+		
+		//DecimalFormat form = new DecimalFormat("0.00");  // 소숫점 뒷자리 2자리로 맞추기
+		// Decimal Format을 사용하면서 숫자가 String타입으로 변환되서 %s로 사용!!
+		System.out.printf("%-12s %7s", "Pay:       $" , (String)form.format(Switch_income.pay));
+		System.out.println();
+		System.out.printf("%-12s %7s", "Bonus:     $", (String)form.format(Switch_income.bonus));
+		System.out.println();		
+		double total = Switch_income.pay + Switch_income.bonus;
+		System.out.printf("%-12s %7s", "Total Pay: $", (String)form.format(total));	
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		
+		boolean TF = true;
+	
+		while(TF) {
+			
+			System.out.println("Enter Type of Employee");
+			System.out.println("1. Full-Time");
+			System.out.println("2. Part-Time");
+			System.out.println("3. Piecework");		
+			System.out.println("-----------------------");
+			System.out.print("Type:");
+			int a;
+			a = sc.nextInt();
+			
+			if(a>0 && a<4 ) {
+			
+				switch(a){
+					case 1:
+					case 2:
+					case 3:
+						Switch_income.getPay(a);
+						Switch_income.getBonus();
+						Switch_income.printOut();
+						System.out.println();
+						break;			
+				}
+				
+			} else {
+				System.out.println();
+				System.out.println("입력이 틀렸습니다.");
+				System.out.println("프로그램 종료");
+				System.out.println();
+				TF = false;
+				sc.close();
+			}
+		}	
+			 
+	}
+}

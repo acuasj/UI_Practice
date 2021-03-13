@@ -1,0 +1,79 @@
+package Test02;
+
+class Test10_02{
+
+//static의 유무에 따라 & 같은클래스 안인지 밖인지에 따라, 필드와 메소드를 불러와 이용하는 방법의 차이에 대해 알아보자!! 
+	
+	int a = 10; 
+	static int b = 20;
+	
+	public static void show02() { 
+	   System.out.println("다른 클래스 show02");	
+	}
+	
+	public void noshow02() { 
+		System.out.println("다른 클래스 noshow02");
+	}	
+}
+
+public class Test10_01 {
+	
+	int i; 
+	static int j = 2;
+	
+	Test10_01(){
+		
+		int x = 3+5;
+		i = x;
+	}
+	 
+	public static void show() {  
+		System.out.println();
+		System.out.println(">>> 같은 클래스 생성자 불러오기");
+		Test10_01 F = new Test10_01();
+		System.out.println("같은 클래스 show i : " + F.i);
+		System.out.println("같은 클래스 static show j : " + Test10_01.j);
+		
+		F.i = -1;
+		System.out.println("변수변경 show i : " + F.i);
+		Test10_01.j = -2;
+		System.out.println("변수변경 static show j : " + Test10_01.j);	
+		
+		
+		System.out.println();
+		System.out.println(">>> 다른 클래스 생성자 불러오기");
+		Test10_02 T = new Test10_02();
+		System.out.println("02 클래스 show a : " + T.a);
+		System.out.println("02 클래스 static show b : " + Test10_02.b);
+		
+		T.a = -10;
+		System.out.println("변수변경  02 클래스 show a : " + T.a);
+		Test10_02.b = -20;
+		System.out.println("변수변경  02 클래스 static show b : " + Test10_02.b);
+		
+	}
+	
+	public void noshow() { }
+	
+	public static void main(String[] args) {		
+		
+		System.out.println(">> 같은 클래스 메소드를 호출");
+		
+		show();
+		
+		Test10_01 A = new Test10_01();
+		A.noshow();
+		
+		System.out.println();
+		System.out.println();
+		System.out.println(">> 02 클래스 메소드를 호출");
+		Test10_02.show02();
+		//Test10_02.noshow02();
+		
+		Test10_02 B = new Test10_02();
+		B.noshow02();
+	}
+}
+
+
+
